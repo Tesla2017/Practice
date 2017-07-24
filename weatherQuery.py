@@ -41,7 +41,7 @@ if __name__ == '__main__':
 		second = 3590   # 查询间隔时间，不含网页请求执行时间
 		if queryTimeMinite == ["00", "00"]:
 			queryTimeHour = int(queryTime.split(" ")[3].split(":")[0])
-			if 18<=queryTimeHour<24 or 00<queryTimeHour<9:    # 晚上6点至第二天9点之间，每过5小时查询一次，其他时间1小时查询一次
+			if 18<=queryTimeHour<24 or 00<queryTimeHour<9:    # 晚上6点至第二天9点之间，每5小时查询一次，其他时间1小时查询一次
 				second = 17990
 				weatherQuery()
 				time.sleep(second)
