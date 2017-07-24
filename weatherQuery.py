@@ -17,11 +17,11 @@ def weatherQuery():
 
 	"""获取天气信息"""
 	address = soup.find("div", "selectCity").text
-	timeNow = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 	temp = soup.find("div", "tempDiv").text.replace("\n", "")
 	weather = soup.find("div", "weather dis").text
 	wind = soup.find("div", "todayLeft").find_all("p")[0].text.replace(" ", ":")
 	humidity = soup.find("div", "todayLeft").find_all("p")[1].text.replace(" ", ":")
+	timeNow = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 	sentTo.send("{}  {}  {}  {}  {}  {}".format(timeNow, address, temp, weather, wind, humidity))
 
 	"""写入天气查询日志"""
@@ -38,7 +38,7 @@ if __name__ == '__main__':
 	while True:
 		queryTime = time.ctime()
 		queryTimeMinite = queryTime.split(" ")[3].split(":")[1:]
-		second = 3590   # 查询间隔时间，不含网页请求执行时间
+		second = 3590   # 查询间隔时间
 		if queryTimeMinite == ["00", "00"]:
 			queryTimeHour = int(queryTime.split(" ")[3].split(":")[0])
 			if 18<=queryTimeHour<24 or 00<queryTimeHour<9:    # 晚上6点至第二天9点之间，每5小时查询一次，其他时间1小时查询一次
