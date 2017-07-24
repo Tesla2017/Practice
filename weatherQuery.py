@@ -29,6 +29,7 @@ def weatherQuery():
 	    f.write("{}  {}  {}  {}  {}  {}".format(timeNow, address, temp, weather, wind, humidity))
 	    f.write("\n")
 
+	print("{}  {}  {}  {}  {}  {}".format(timeNow, address, temp, weather, wind, humidity))
 	print("查询结束并生成日志，已发送至微信\n")
 	print("下次查询时间,{0}小时后".format(round(second/3600)))
 
